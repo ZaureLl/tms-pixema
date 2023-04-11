@@ -3,6 +3,7 @@ import Title from "../../assets/components/Title";
 import styles from "./AuthLayout.module.scss";
 import { url } from "inspector";
 import { LogoIcon } from "../../assets/icons";
+import Logo from "../../assets/components/Logo/Logo";
 
 type Props = {
     title: string,
@@ -15,7 +16,7 @@ const AuthLayout: React.FC<Props> = ({
 }) => (
     <div className={styles.pageContanier}>
         <div className={styles.logoContanier}>
-            <LogoIcon />
+            <Logo />
         </div>
         <div className={styles.formWrapper}>
             <div className={styles.formContanier}>

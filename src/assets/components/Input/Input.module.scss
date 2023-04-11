@@ -1,1 +1,49 @@
 @import "../../colors.scss";
+
+.input {
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    height: 56px;
+    background-color: $graphite;
+    padding-left: 20px;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: 2px solid $primary;
+    }
+
+    &:active {
+        color: $white;
+    }
+}
+
+.input::placeholder {
+
+    color: $secondary;
+
+    &:active {
+        color: $white;
+    }
+}
+
+.errorInput {
+    outline: 2px solid $error;
+
+    &::placeholder {
+        color: $secondary;
+    }
+
+    &:focus {
+        outline: 2px solid $error;
+    }
+}
+
+.disableInput {
+    cursor: not-allowed;
+    background-color: $secondary;
+
+    &::placeholder {
+        color: $light;
+    }
+}

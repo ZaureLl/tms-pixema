@@ -9,7 +9,7 @@ type InputProps = {
     title?: string;
     placeholder: string;
     disabled?: boolean;
-    errorText?: string;
+    errorInput?: string;
     type?: string;
     inputClassName?: string;
     onBlur?: () => void
@@ -22,7 +22,7 @@ const Input: FC<InputProps> = ({
     type,
     placeholder,
     disabled,
-    errorText,
+    errorInput,
     inputClassName,
     onKeyDown,
     onBlur,
@@ -37,8 +37,8 @@ const Input: FC<InputProps> = ({
             <input
                 value={value}
                 className={classNames(styles.input, inputClassName, {
-                    [styles.disabled]: disabled,
-                    [styles.valid]: errorText,
+                    [styles.disableInput]: disabled,
+                    [styles.valid]: errorInput,
                 })}
                 placeholder={placeholder}
                 onKeyDown={onKeyDown}
@@ -47,7 +47,7 @@ const Input: FC<InputProps> = ({
                 disabled={disabled}
                 type={type}
             />
-            {errorText && <div className={styles.validText}>{errorText}</div>}
+            {errorInput && <div className={styles.validText}>{errorInput}</div>}
         </div>
     );
 };

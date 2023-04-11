@@ -1,0 +1,31 @@
+@import "../../colors.scss";
+
+button {
+    background-color: $primary;
+    border-style: none;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 56px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+    &:hover {
+        background-color: $primary2;
+    }
+}
+
+.regularButton {
+    padding: 17px 69px 15px 69px;
+    color: $white;
+}
+
+.iconButton {
+    padding: 16px;
+}
+
+.disabledButton {
+    background-color: $secondary;
+    color: $light;
+    cursor: not-allowed;
+}
