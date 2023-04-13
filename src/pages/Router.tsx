@@ -22,6 +22,8 @@ const Router = () => {
             <Routes>
                 <Route path={RoutesList.Home} element={<PagesContainer />}>
                     <Route path={RoutesList.Home} element={<Home />} />
+                    <Route path={RoutesList.Trends} element={<Home />} />
+
                 </Route>
                 <Route path={RoutesList.SignIn} element={<SignIn />} />
                 {/* <Route path={RoutesList.SignUp} element={<SignUp />} />

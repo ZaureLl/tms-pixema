@@ -32,7 +32,7 @@ const Input: FC<InputProps> = ({
     };
 
     return (
-        <div className={styles.container}>
+        <>
             {title && <div className={styles.title}>{title}</div>}
             <input
                 value={value}
@@ -48,7 +48,7 @@ const Input: FC<InputProps> = ({
                 type={type}
             />
             {errorInput && <div className={styles.validText}>{errorInput}</div>}
-        </div>
+        </>
     );
 };
 

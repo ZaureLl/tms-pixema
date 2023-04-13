@@ -1,0 +1,17 @@
+@import "../../../assets/colors.scss";
+
+.headerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 152px;
+}
+
+.logoWrapper {
+    padding: 0px 146px 0 64px;
+}
+
+.inputWrapper {
+    flex: 1 1 auto;
+    width: 100%;
+}

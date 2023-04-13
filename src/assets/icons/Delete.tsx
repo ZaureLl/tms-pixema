@@ -1,0 +1,20 @@
+import React from "react";
+
+export const Delete = ({
+    width = "24",
+    height = "24",
+    fill = "white",
+    className = "string",
+}) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M13.4301 11.8426L17.3646 7.62478L16.2332 6.49341L12.2797 10.7315L8.15085 6.74365L7 7.8552L11.1888 11.901L7.25432 16.1188L8.38569 17.2502L12.3392 13.012L16.468 16.9999L17.6188 15.8883L13.4301 11.8426Z" fill="#AFB2B6" />
+        </svg>
+    );
+};

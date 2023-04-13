@@ -1,0 +1,30 @@
+@import "../../colors.scss";
+
+.link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: $secondary;
+
+    &:hover {
+        color: $primary2;
+
+        svg {
+            path {
+                fill: $primary2;
+            }
+        }
+    }
+}
+
+
+.active {
+    color: $primary;
+
+    svg {
+        path {
+            fill: $primary;
+        }
+    }
+}

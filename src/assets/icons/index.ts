@@ -1,2 +1,9 @@
 export { UserIcon } from "./UserIcon";
 export { LogoIcon } from "./LogoIcon";
+export { ChevronDown } from './ChevronDown';
+export { ChevronRight } from './ChevronRight';
+export { Delete } from "./Delete";
+export { Shape } from './Shape';
+export { Fire } from "./Fire";
+export { Bookmark } from "./Bookmark";
+export { Gear } from "./Gear";

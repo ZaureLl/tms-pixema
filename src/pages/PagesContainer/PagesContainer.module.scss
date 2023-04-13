@@ -2,4 +2,21 @@
 
 .pagesContainerWrapper {
     background-color: $black;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainWrapper {
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.sidebarWrapper {
+    flex: 0 0 368px;
+}
+
+.outletWrapper {
+    flex: 1 1 auto;
+    background-color: $light;
 }
