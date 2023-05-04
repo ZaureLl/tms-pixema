@@ -6,6 +6,7 @@ import classNames from "classnames";
 import ButtonsGroup from "../ButtonsGroup/ButtonsGroup";
 import { SingleFilm as FilmType } from "../../../utils/@globalTypes";
 import { Circle } from "../../icons";
+import EmptyState from "../EmptyState";
 
 type SingleFilmProps = {
     film: FilmType;
@@ -87,7 +88,7 @@ const SingleFilm: FC<SingleFilmProps> = ({ film }) => {
 
     else {
         return (
-            <div>ghhjh</div>
+            <EmptyState description="No results found" />
         )
     }
 

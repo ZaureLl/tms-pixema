@@ -1,0 +1,23 @@
+@import "../../colors.scss";
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.lightContainer {
+
+    .description {
+        color: $secondary;
+    }
+}
+
+.description {
+    font-size: 16px;
+    color: $white;
+    margin-top: 8px;
+}

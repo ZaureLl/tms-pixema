@@ -19,7 +19,7 @@ const Film = () => {
         const id = Number(params.id);
         dispatch(getSingleFilm({ id }));
     }, []);
-    console.log(isLoading)
+
 
     return (
         <>
@@ -28,7 +28,6 @@ const Film = () => {
             ) : (
                 <SingleFilm film={film} />
             )}
-
         </>
     )
 };
