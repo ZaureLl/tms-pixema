@@ -9,10 +9,10 @@ type InputProps = {
     title?: string;
     placeholder: string;
     disabled?: boolean;
-    errorInput?: string;
     type?: string;
     inputClassName?: string;
-    onBlur?: () => void
+    onBlur?: () => void;
+    errorText?: string;
 };
 
 const Input: FC<InputProps> = ({
@@ -22,10 +22,10 @@ const Input: FC<InputProps> = ({
     type,
     placeholder,
     disabled,
-    errorInput,
     inputClassName,
     onKeyDown,
     onBlur,
+    errorText,
 }) => {
     const onChangeText = (e: ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value);
@@ -37,8 +37,8 @@ const Input: FC<InputProps> = ({
             <input
                 value={value}
                 className={classNames(styles.input, inputClassName, {
-                    [styles.disableInput]: disabled,
-                    [styles.valid]: errorInput,
+                    [styles.disabled]: disabled,
+                    [styles.valid]: errorText,
                 })}
                 placeholder={placeholder}
                 onKeyDown={onKeyDown}
@@ -47,7 +47,7 @@ const Input: FC<InputProps> = ({
                 disabled={disabled}
                 type={type}
             />
-            {errorInput && <div className={styles.validText}>{errorInput}</div>}
+            {errorText && <div className={styles.invalidText}>{errorText}</div>}
         </>
     );
 };

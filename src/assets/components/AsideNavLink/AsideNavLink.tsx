@@ -1,11 +1,8 @@
 import React, { FC } from "react";
 import styles from "./AsideNavLink.module.scss";
 import { Link } from "react-router-dom";
-import Router, { RoutesList } from "../../../pages/Router";
-import { Shape } from "../../icons";
 import { LinkProps } from "./types";
 import { useLocation } from "react-router-dom";
-
 
 
 const AsideNavLink: FC<LinkProps> = ({

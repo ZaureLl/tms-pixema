@@ -1,0 +1,87 @@
+@import "../../assets/colors.scss";
+
+.contentWrapper {
+    padding: 0 367px 64px 0;
+    color: $white;
+    background-color: $black;
+    height: 100%;
+    font-weight: 500;
+}
+
+.settingsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+h2 {
+    padding-bottom: 16px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.buttoWrapper {
+    display: flex;
+    gap: 40px;
+    justify-content: flex-end;
+    padding-top: 48px;
+}
+
+.profileInputsWrapper {
+    display: flex;
+    background-color: $dark;
+    border-radius: 10px;
+    gap: 40px;
+    padding: 40px;
+}
+
+.passwordInputsWrapper {
+    display: flex;
+    gap: 40px;
+    background-color: $dark;
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.asideLargeContainer {
+    flex: 0 1 50%;
+}
+
+.asideContainer {
+    flex: 0 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.nameWrapper {
+    flex: 0 1 50%;
+}
+
+.colorModeContentWrapper {
+    display: flex;
+    justify-content: space-between;
+    background-color: $dark;
+    border-radius: 10px;
+    padding: 40px;
+    align-items: center;
+}
+
+h3 {
+    font-weight: 700;
+}
+
+.emailWrapper {
+    flex: 0 1 50%;
+}
+
+.colorModeAsideWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.textColorModeSwither {
+    color: $light;
+}

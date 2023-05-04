@@ -1,0 +1,26 @@
+@import "../../../assets/colors.scss";
+@import "../../../assets/mixins.scss";
+
+.signUpCtnr {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    color: $secondary;
+}
+
+.formContainer {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    padding-bottom: 8px;
+}
+
+.bottomGroup {
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+}
+
+.navigateLink {
+    @include navLink;
+}

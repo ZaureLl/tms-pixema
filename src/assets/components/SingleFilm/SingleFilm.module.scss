@@ -1,0 +1,103 @@
+@import "../../colors.scss";
+
+.contentWrapper {
+    display: flex;
+    gap: 42px;
+}
+
+.asideImgWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+    align-items: center;
+}
+
+.img {
+    max-width: 266px;
+    border-radius: 20px;
+}
+
+.twoButtons {
+    background-color: $light;
+}
+
+.mainConten {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    color: $white;
+    max-width: 878px;
+}
+
+.genresList {
+    color: $light;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    ul {
+        display: flex;
+        gap: 8px;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+}
+
+.name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 60px;
+}
+
+.infoBlock {
+    display: flex;
+    gap: 28px;
+    margin: 26px 0 42px 0;
+}
+
+.badge {
+    border-radius: 6px;
+    padding: 8px;
+    background-color: $graphite;
+}
+
+.imbRating {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    align-items: baseline;
+}
+
+.description {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 40px 0 56px 0;
+}
+
+.tablePropertyName {
+    color: $light;
+    width: 18.7%;
+    display: inline-block;
+}
+
+.tableLine {
+    display: flex;
+}
+
+.tableProperty {
+    max-width: 70%;
+}

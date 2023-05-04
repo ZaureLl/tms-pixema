@@ -1,3 +1,5 @@
+import { Share } from './Share';
+import { Imb } from './Imb';
 export { UserIcon } from "./UserIcon";
 export { LogoIcon } from "./LogoIcon";
 export { ChevronDown } from './ChevronDown';
@@ -7,3 +9,4 @@ export { Shape } from './Shape';
 export { Fire } from "./Fire";
 export { Bookmark } from "./Bookmark";
 export { Gear } from "./Gear";
+export { Circle } from './Circle';

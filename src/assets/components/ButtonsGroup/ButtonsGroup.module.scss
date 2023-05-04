@@ -1,0 +1,34 @@
+@import "../../colors.scss";
+
+.btnGroup {
+    display: flex;
+}
+
+.btn {
+    display: inline-block;
+    padding: 19px 60px;
+    background-color: $graphite;
+
+    &:hover {
+        cursor: pointer;
+
+        svg>circle {
+            stroke: $white;
+        }
+
+        svg>path {
+            stroke: $white;
+            fill: $white;
+        }
+    }
+}
+
+
+.leftBtn {
+    border-right: 1px solid $black;
+    border-radius: 10px 0 0 10px;
+}
+
+.rightBtn {
+    border-radius: 0 10px 10px 0;
+}

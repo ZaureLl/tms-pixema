@@ -9,13 +9,10 @@
     padding-left: 20px;
     box-sizing: border-box;
     width: 100%;
+    color: $white;
 
     &:focus {
         outline: 2px solid $primary;
-    }
-
-    &:active {
-        color: $white;
     }
 }
 
@@ -28,7 +25,13 @@
     }
 }
 
-.errorInput {
+.title {
+    font-weight: 600;
+    line-height: 24px;
+    padding-bottom: 8px;
+}
+
+.valid {
     outline: 2px solid $error;
 
     &::placeholder {
@@ -38,6 +41,11 @@
     &:focus {
         outline: 2px solid $error;
     }
+}
+
+.invalidText {
+    padding-top: 10px;
+    color: $error;
 }
 
 .disableInput {

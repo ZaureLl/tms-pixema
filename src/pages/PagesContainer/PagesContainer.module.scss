@@ -2,7 +2,7 @@
 
 .pagesContainerWrapper {
     background-color: $black;
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -10,6 +10,7 @@
 .mainWrapper {
     flex: 1 1 auto;
     display: flex;
+    height: 100%;
 }
 
 .sidebarWrapper {
@@ -18,5 +19,5 @@
 
 .outletWrapper {
     flex: 1 1 auto;
-    background-color: $light;
+    height: 100%;
 }

@@ -1,0 +1,20 @@
+@import "../../colors.scss";
+
+.ratingDefault {
+    padding: 8px;
+    max-width: 24px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.max {
+    background-color: $green;
+}
+
+.medium {
+    background-color: $yellow;
+}
+
+.low {
+    background-color: $orange;
+}
