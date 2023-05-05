@@ -3,6 +3,7 @@ import styles from "./FilmCard.module.scss";
 import { FilmProps } from "./types";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 enum ratingType {
     Max,
@@ -30,6 +31,7 @@ const FilmCard: FC<FilmProps> = ({ film }) => {
     };
 
     ratingStyle();
+
 
     const onFilmNameClick = () => {
         navigate(`/${id}`);

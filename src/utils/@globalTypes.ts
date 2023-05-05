@@ -18,6 +18,7 @@ export type FilmType = {
 export type FilmListType = FilmType[];
 
 export type SingleFilm = null | {
+    id: number;
     poster: string;
     genres: [
         {

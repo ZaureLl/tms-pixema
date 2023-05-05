@@ -7,14 +7,18 @@ import ButtonsGroup from "../ButtonsGroup/ButtonsGroup";
 import { SingleFilm as FilmType } from "../../../utils/@globalTypes";
 import { Circle } from "../../icons";
 import EmptyState from "../EmptyState";
+import { useDispatch, useSelector } from "react-redux";
+import { FilmSelectors, setSavedFilm } from "../../../redux/reducers/filmSlice";
 
 type SingleFilmProps = {
     film: FilmType;
 };
 
 const SingleFilm: FC<SingleFilmProps> = ({ film }) => {
+    const dispatch = useDispatch();
+    const savedFilms = useSelector(FilmSelectors.getSavedFilms);
     if (film) {
-        const { poster, genres, name, rating, runtime, description, budget, credits, release_date, year } = film;
+        const { poster, genres, name, rating, runtime, description, budget, credits, release_date, year, id } = film;
         const genreNames = genres.map((genre) => genre.display_name);
 
         const actorList = credits.filter(credit => credit.pivot.department === "cast");
@@ -27,16 +31,16 @@ const SingleFilm: FC<SingleFilmProps> = ({ film }) => {
         const writersNames = writersList.map((name) => name.name).join(", ");
 
         const releaseDate = new Date(release_date);
-        // const options = {day: "2-digit", month: "short", year:"numeric"};
         const formattedReleaseMonth = releaseDate.toLocaleDateString("en-US", { month: "short" });
         const formattedReleaseDay = releaseDate.toLocaleDateString("en-US", { day: "2-digit" });
 
+        const savedFilmIndex = savedFilms.findIndex((savedFilm) => savedFilm?.id === film.id);
 
         return (
             <div className={styles.contentWrapper}>
                 <div className={styles.asideImgWrapper}>
                     <img src={poster} alt="" className={styles.img} />
-                    <ButtonsGroup />
+                    <ButtonsGroup isSaved={savedFilmIndex > -1} onClickBookmarkIcon={() => { dispatch(setSavedFilm(film)) }} />
                 </div>
                 <div className={styles.mainConten}>
                     <div className={styles.genresList}>
@@ -95,4 +99,3 @@ const SingleFilm: FC<SingleFilmProps> = ({ film }) => {
 };
 
 export default SingleFilm;
-

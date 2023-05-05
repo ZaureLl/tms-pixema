@@ -11,6 +11,7 @@ type FilmState = {
     filmsCount: number;
     singleFilm: SingleFilm;
     isSingleFilmLoading: boolean;
+    savedFilms: SingleFilm[],
 };
 
 const initialState: FilmState = {
@@ -19,6 +20,7 @@ const initialState: FilmState = {
     filmsCount: 0,
     singleFilm: null,
     isSingleFilmLoading: false,
+    savedFilms: [],
 };
 
 const filmSlice = createSlice({
@@ -30,7 +32,7 @@ const filmSlice = createSlice({
             state,
             { payload: { filmsCount, filmList } }: PayloadAction<SetAllFilmsPayload>
         ) => {
-            state.filmList = filmList;
+            state.filmList = [...state.filmList, ...filmList];
             state.filmsCount = filmsCount;
         },
         setAllFilmsLoading: (state, action: PayloadAction<boolean>) => {
@@ -46,6 +48,24 @@ const filmSlice = createSlice({
         setSingleFilmLoading: (state, action: PayloadAction<boolean>) => {
             state.isSingleFilmLoading = action.payload;
         },
+
+
+        setSavedFilm: (state, action: PayloadAction<SingleFilm>) => {
+            console.log('text', action)
+            const savedFilmIndex = state.savedFilms.findIndex(
+                (film) => {
+                    if (film) {
+                        return film.id === action.payload?.id
+                    } return false;
+                }
+            );
+
+            if (savedFilmIndex === -1) {
+                state.savedFilms.push(action.payload);
+            } else {
+                state.savedFilms.splice(savedFilmIndex, 1);
+            }
+        },
     }
 });
 
@@ -56,6 +76,7 @@ export const {
     getSingleFilm,
     setSingleFilm,
     setSingleFilmLoading,
+    setSavedFilm,
 } = filmSlice.actions;
 
 export default filmSlice.reducer;
@@ -66,4 +87,5 @@ export const FilmSelectors = {
     getAllFilmsLoading: (state: RootState) => state.film.isAllFilmsLoading,
     getSingleFilm: (state: RootState) => state.film.singleFilm,
     getSingleFilmLoading: (state: RootState) => state.film.isSingleFilmLoading,
-}
+    getSavedFilms: (state: RootState) => state.film.savedFilms,
+};
