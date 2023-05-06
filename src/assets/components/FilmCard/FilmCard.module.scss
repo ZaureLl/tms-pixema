@@ -1,7 +1,7 @@
 @import "../../colors.scss";
 
 .container {
-    max-width: 266px;
+    width: 16.5%;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -14,8 +14,7 @@
 }
 
 .img {
-    width: 266px;
-    height: 357px;
+    width: 100%;
     border-radius: 20px;
     object-fit: fill;
 }
@@ -24,7 +23,7 @@
     position: absolute;
     left: 20px;
     right: 0;
-    bottom: 309px;
+    top: 20px;
     padding: 2px 8px;
     max-width: 24px;
     border-radius: 6px;

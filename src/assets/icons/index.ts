@@ -1,5 +1,6 @@
-import { Share } from './Share';
-import { Imb } from './Imb';
+export { Filtr } from './Filtr';
+export { Share } from './Share';
+export { Imb } from './Imb';
 export { UserIcon } from "./UserIcon";
 export { LogoIcon } from "./LogoIcon";
 export { ChevronDown } from './ChevronDown';

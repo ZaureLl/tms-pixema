@@ -11,6 +11,7 @@ type ButtonProps = {
     disabled?: boolean;
     className?: string;
     type: ButtonType;
+    icon?: ReactNode;
 };
 
 const btnStyles = {
@@ -24,6 +25,7 @@ const Button: FC<ButtonProps> = ({
     disabled,
     className,
     type,
+    icon,
 }) => {
 
     const buttonClassName = btnStyles[type];
@@ -33,7 +35,7 @@ const Button: FC<ButtonProps> = ({
             className={classNames(className, buttonClassName, {
                 [styles.disabledButton]: disabled,
             })}>
-            {title}
+            {title} {icon}
         </button>
     );
 };

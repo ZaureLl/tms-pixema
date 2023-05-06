@@ -6,8 +6,7 @@ import { PER_PAGE } from "../../utils/constants";
 import ReactPaginate from "react-paginate";
 import Loader from "../../assets/components/Loader/Loader";
 import styles from "./Home.module.scss";
-import Button from "../../assets/components/Button/Button";
-import { ButtonType } from "../../utils/@globalTypes";
+import ArrowLoader from "../../assets/components/ArrowLoader/ArrowLoader";
 
 
 const Home = () => {
@@ -41,9 +40,7 @@ const Home = () => {
                             return <FilmCard key={item.id} film={item} />;
                         })}
                     </div>
-                    <div>
-                        <Button title={"undefined"} onClick={showMore} type={ButtonType.IconBtn}></Button>
-                    </div>
+                    <div className={styles.containerBtn}><div onClick={showMore} className={styles.showMoreBtn}>Show more{isLoading && <ArrowLoader />}</div> </div>
                 </>
             )}
         </>
