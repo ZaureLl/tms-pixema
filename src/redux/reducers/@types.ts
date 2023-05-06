@@ -43,6 +43,7 @@ export type NewPasswordPayload = PayloadWithCallback<NewPasswordData>
 export type GetAllFilmsPayload = {
     perPage: number;
     page: number;
+    score: string | null;
 };
 
 export interface SetAllFilmsPayload {

@@ -49,6 +49,12 @@ const filmSlice = createSlice({
             state.isSingleFilmLoading = action.payload;
         },
 
+        clearListOfFilm: (
+            state,
+        ) => {
+            state.filmList = [];
+        },
+
 
         setSavedFilm: (state, action: PayloadAction<SingleFilm>) => {
             console.log('text', action)
@@ -77,6 +83,7 @@ export const {
     setSingleFilm,
     setSingleFilmLoading,
     setSavedFilm,
+    clearListOfFilm,
 } = filmSlice.actions;
 
 export default filmSlice.reducer;

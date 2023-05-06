@@ -1,3 +1,4 @@
+import { SCORE } from './../../utils/constants';
 import { create } from "apisauce";
 import { SignInUserData } from "../reducers/@types";
 import { PER_PAGE } from "../../utils/constants";
@@ -8,9 +9,9 @@ const API = create({
     baseURL: "https://unelmamovie.com/api/v1",
 });
 
-const getFilms = (perPage: number, page: number) => {
+const getFilms = (perPage: number, page: number, score: string | null) => {
     return API.get("/titles",
-        { perPage: PER_PAGE, page },
+        { perPage, page, score },
         {
             headers: {
                 Authorization: `Bearer ${authToken}`,

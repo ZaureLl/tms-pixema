@@ -11,6 +11,7 @@ import SingleFilm from "../assets/components/SingleFilm/SingleFilm";
 import { Imb } from "../assets/icons/Imb";
 import Film from "./Film/Film";
 import Favorites from "./Favorites/Favorites";
+import Trends from "./Trends/Trends";
 
 export enum RoutesList {
     Home = "/",
@@ -33,7 +34,7 @@ const Router = () => {
                 <Route path={RoutesList.Home} element={<PagesContainer />}>
                     <Route path={RoutesList.Home} element={<Home />} />
                     <Route path={RoutesList.Favorites} element={<Favorites />} />
-                    <Route path={RoutesList.Trends} element={<Home />} />
+                    <Route path={RoutesList.Trends} element={<Trends />} />
                     <Route path={RoutesList.Settings} element={<Settings />} />
                     <Route path={RoutesList.SingleFilm} element={<Film />} />
                 </Route>

@@ -21,11 +21,12 @@ import {
 
 function* getAllFilmsWorker(action: PayloadAction<GetAllFilmsPayload>) {
   yield put(setAllFilmsLoading(true));
-  const { perPage, page } = action.payload;
+  const { perPage, page, score } = action.payload;
   const { ok, data, problem }: ApiResponse<AllFilmsResponse> = yield call(
     API.getFilms,
     perPage,
     page,
+    score,
   );
   if (ok && data) {
     console.log(data.pagination.data)

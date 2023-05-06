@@ -22,7 +22,7 @@ const Home = () => {
     useEffect(() => {
         const perPage = PER_PAGE;
         const page = currentPage;
-        dispatch(getAllFilms({ perPage, page }));
+        dispatch(getAllFilms({ perPage, page, score: null }));
     }, [currentPage]);
 
     const showMore = () => setCurrentPage((prevValue) => prevValue + 1);
