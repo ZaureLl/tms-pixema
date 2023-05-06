@@ -8,11 +8,11 @@ export enum ButtonType {
 export type FilmType = {
     id: number,
     poster: string,
-    genres: string[],
     name: string,
     rating: string,
     runtime: number,
     description: string,
+    year: string,
 };
 
 export type FilmListType = FilmType[];

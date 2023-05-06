@@ -5,6 +5,7 @@ import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
+
 enum ratingType {
     Max,
     Medium,
@@ -18,8 +19,9 @@ const ratingStyles = {
 };
 
 const FilmCard: FC<FilmProps> = ({ film }) => {
-    const { id, rating, name, poster } = film;
+    const { id, rating, name, poster, year } = film;
     const navigate = useNavigate();
+
 
     let ratingClass = ratingStyles[ratingType.Medium];
     const ratingStyle = () => {
@@ -45,7 +47,7 @@ const FilmCard: FC<FilmProps> = ({ film }) => {
             </div>
             <div className={styles.filmInfo}>
                 <div className={styles.filmName} onClick={onFilmNameClick}>{name}</div>
-                <div className={styles.filmGenres}>Adventure</div>
+                <div className={styles.filmYear}> {year}</div>
             </div>
         </div>
     )

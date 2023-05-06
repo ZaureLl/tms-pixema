@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import FilmCard from "../../assets/components/FilmCard/FilmCard";
 import { useDispatch, useSelector } from "react-redux";
-import { FilmSelectors, getAllFilms } from "../../redux/reducers/filmSlice";
-import { PER_PAGE } from "../../utils/constants";
-import ReactPaginate from "react-paginate";
-import Loader from "../../assets/components/Loader/Loader";
 import styles from "./Home.module.scss";
+
+import FilmCard from "../../assets/components/FilmCard/FilmCard";
+import Loader from "../../assets/components/Loader/Loader";
 import ArrowLoader from "../../assets/components/ArrowLoader/ArrowLoader";
 
+import { FilmSelectors, getAllFilms } from "../../redux/reducers/filmSlice";
+import { PER_PAGE } from "../../utils/constants";
 
 const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -27,16 +27,14 @@ const Home = () => {
 
     const showMore = () => setCurrentPage((prevValue) => prevValue + 1);
 
-
     return (
         <>
-            <div> Home</div>
             {(isLoading && !filmList.length) ? (
                 <Loader />
             ) : (
                 <>
                     <div className={styles.container}>
-                        {filmList.map((item, index) => {
+                        {filmList.map((item) => {
                             return <FilmCard key={item.id} film={item} />;
                         })}
                     </div>
