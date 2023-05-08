@@ -54,7 +54,7 @@ function* getSingleFilmWorker(action: PayloadAction<GetSingleFilmPayload>) {
     console.warn("Error getting set single film", problem);
   }
   yield put(setSingleFilmLoading(false));
-}
+};
 
 function* getRecommendedFilmsWorker(action: PayloadAction<GetRecommendedFilmsPayload>) {
   yield put(setRecommendedFilmsLoading(true));
@@ -70,7 +70,7 @@ function* getRecommendedFilmsWorker(action: PayloadAction<GetRecommendedFilmsPay
     console.warn("Error getting set RecommendedFilms", problem);
   }
   yield put(setRecommendedFilmsLoading(false));
-}
+};
 
 export default function* filmsSaga() {
   yield all([
@@ -78,4 +78,4 @@ export default function* filmsSaga() {
     takeLatest(getSingleFilm, getSingleFilmWorker),
     takeLatest(getRecommendedFilms, getRecommendedFilmsWorker,),
   ]);
-}
+};
