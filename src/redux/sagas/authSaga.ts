@@ -1,9 +1,9 @@
 import { takeLatest, all, call, put } from "redux-saga/effects";
 import { ApiResponse } from "apisauce";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { SignInUserPayload } from "../reducers/@types";
+import { SignInUserPayload, SignUpUserPayload, SignUpUserResponse } from "../reducers/@types";
 import { SignInResponse } from "./@types";
-import { setLoggedIn, signInUser } from "../reducers/authSlice";
+import { setLoggedIn, signInUser, signUpUser } from "../reducers/authSlice";
 import API from '../api';
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "../../utils/constants";
 
@@ -25,8 +25,24 @@ function* signInUserWorker(action: PayloadAction<SignInUserPayload>) {
     }
 };
 
+function* signUpUserWorker(action: PayloadAction<SignUpUserPayload>) {
+    const { data, callback } = action.payload;
+    const { ok,
+        problem,
+    }: ApiResponse<SignUpUserResponse> = yield call(
+        API.signUpUser,
+        data
+    );
+    if (ok) {
+        callback();
+    } else {
+        console.warn("Error sign up user", problem);
+    }
+};
+
 export default function* authSaga() {
     yield all([
         takeLatest(signInUser, signInUserWorker),
+        takeLatest(signUpUser, signUpUserWorker),
     ]);
-}
+};

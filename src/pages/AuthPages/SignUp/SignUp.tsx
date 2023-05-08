@@ -9,16 +9,17 @@ import { NavLink } from "react-router-dom";
 import { RoutesList } from "../../Router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { signInUser } from "../../../redux/reducers/authSlice";
+import { signUpUser } from "../../../redux/reducers/authSlice";
 import classNames from "classnames";
 import { ButtonType } from "../../../utils/@globalTypes";
 
 const SignUp = () => {
-    const device_name = "iphone";
+    const token_name = "iphone 12";
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [password_confirmation, setPassword_confirmation] = useState("");
 
     const [nameTouched, setNameTouched] = useState(false);
     const [passwordTouched, setPasswordTouched] = useState(false);
@@ -43,6 +44,7 @@ const SignUp = () => {
 
     const onChangePassword = (value: string) => {
         setPassword(value);
+        setPassword_confirmation(value);
     };
 
     const onBlurName = () => {
@@ -60,8 +62,8 @@ const SignUp = () => {
     const onSignUpClick = () => {
         dispatch(
             //////TOODO sign up user
-            signInUser({
-                data: { email, password, device_name },
+            signUpUser({
+                data: { email, password, password_confirmation, token_name },
                 callback: () => console.log('test'),
             })
         );

@@ -1,23 +1,31 @@
 @import "../../colors.scss";
 
+.emtyStateWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    max-width: 326px;
+    padding-top: 15%;
+    margin: 0 auto;
+
 }
 
 .lightContainer {
 
-    .description {
-        color: $secondary;
-    }
+    .description {}
 }
 
 .description {
-    font-size: 16px;
-    color: $white;
-    margin-top: 8px;
+    font-size: 20px;
+    color: $secondary;
+    ;
+    margin-top: 32px;
 }

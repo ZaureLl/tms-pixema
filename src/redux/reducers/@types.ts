@@ -1,3 +1,4 @@
+import { type } from "os";
 import RecommendedFilms from "../../assets/components/RecommendedFilms";
 import { FilmListType, RecommendedFilm, RecommendedListType, SingleFilm } from "../../utils/@globalTypes";
 
@@ -23,6 +24,13 @@ export type SignInUserData = {
     device_name: string;
 };
 
+export type SignUpUserData = {
+    email: string;
+    password: string;
+    password_confirmation: string;
+    token_name: string;
+};
+
 export type ResetPasswordData = {
     email: string;
 }
@@ -33,11 +41,12 @@ export type NewPasswordData = {
     new_password: string;
 }
 
-export type SignUpUserPayload = PayloadWithCallback<UserPayloadData>;
+export type SignUpUserPayload = PayloadWithCallback<SignUpUserData>;
 export type ActivateUserPayload = PayloadWithCallback<ActivateUserData>;
 export type SignInUserPayload = PayloadWithCallback<SignInUserData>;
 export type ResetPasswordPayload = PayloadWithCallback<ResetPasswordData>
 export type NewPasswordPayload = PayloadWithCallback<NewPasswordData>
+
 
 
 
@@ -67,3 +76,7 @@ export type GetRecommendedFilmsPayload = {
 export type SetRecommendedFilmsPayload = {
     recommendedFilms: RecommendedListType;
 }
+
+export type SignUpUserResponse = {
+    user: any;
+};

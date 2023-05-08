@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { RootState } from "../store";
-import { SignInUserPayload } from "./@types";
+import { SignInUserPayload, SignUpUserPayload } from "./@types";
 
 const initialState: any = {
     isLoggedIn: true,
-    userInfo: null,
 };
 
 const authSlice = createSlice({
@@ -17,6 +15,7 @@ const authSlice = createSlice({
             state.isLoggedIn = action.payload;
         },
         logoutUser: (_, __: PayloadAction<undefined>) => { },
+        signUpUser: (_, __: PayloadAction<SignUpUserPayload>) => { },
     },
 });
 
@@ -24,6 +23,7 @@ export const {
     signInUser,
     setLoggedIn,
     logoutUser,
+    signUpUser,
 } = authSlice.actions;
 
 export default authSlice.reducer;
