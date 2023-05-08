@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import styles from './SingleFilm.module.scss';
 import ColoredRating from "../ColoredRating/ColoredRating";
 import { Imb } from "../../icons/Imb";
@@ -9,6 +9,7 @@ import { Circle } from "../../icons";
 import EmptyState from "../EmptyState";
 import { useDispatch, useSelector } from "react-redux";
 import { FilmSelectors, setSavedFilm } from "../../../redux/reducers/filmSlice";
+
 
 type SingleFilmProps = {
     film: FilmType;
@@ -37,6 +38,7 @@ const SingleFilm: FC<SingleFilmProps> = ({ film }) => {
         const savedFilmIndex = savedFilms.findIndex((savedFilm) => savedFilm?.id === film.id);
 
         return (
+
             <div className={styles.contentWrapper}>
                 <div className={styles.asideImgWrapper}>
                     <img src={poster} alt="" className={styles.img} />
@@ -83,7 +85,6 @@ const SingleFilm: FC<SingleFilmProps> = ({ film }) => {
                         {writersNames ?
                             <div className={styles.tableLine}><span className={styles.tablePropertyName}>Writers</span><span className={styles.tableProperty}>{writersNames}</span></div>
                             : null}
-
                     </div>
                 </div>
             </div>

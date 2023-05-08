@@ -1,3 +1,5 @@
+export { ArrowLeft } from './ArrowLeft';
+export { ArrowRight } from './ArrowRight';
 export { Filtr } from './Filtr';
 export { Share } from './Share';
 export { Imb } from './Imb';

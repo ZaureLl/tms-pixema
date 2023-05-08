@@ -29,6 +29,16 @@ const getSingleFilm = (id: number) => {
         });
 };
 
+const getRecommendedFilms = (id: number) => {
+    return API.get("/titles/" + id + "/related",
+        {},
+        {
+            headers: {
+                Authorization: `Bearer ${authToken}`,
+            },
+        });
+};
+
 
 const signInUser = (data: SignInUserData) => {
     return API.post("/auth/login/", data);
@@ -48,4 +58,5 @@ export default {
     verifyToken,
     refreshToken,
     getSingleFilm,
+    getRecommendedFilms,
 };

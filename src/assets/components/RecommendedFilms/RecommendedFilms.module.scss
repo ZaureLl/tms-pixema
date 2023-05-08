@@ -1,0 +1,56 @@
+@import "../../colors.scss";
+
+.container {
+    display: flex;
+    flex: 0 1 25%;
+    gap: 40px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: $white;
+}
+
+.imgContainer {}
+
+img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: fill;
+}
+
+.ratingDefault {
+    position: absolute;
+    left: 20px;
+    right: 0;
+    top: 20px;
+    padding: 2px 8px;
+    max-width: 24px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.filmName {
+    padding: 24px 0 4px 0;
+    cursor: pointer;
+
+    &:hover {
+        color: $primary;
+    }
+}
+
+.filmYear {
+    color: $light;
+}
+
+.max {
+    background-color: $green;
+}
+
+.medium {
+    background-color: $yellow;
+}
+
+.low {
+    background-color: $orange;
+}

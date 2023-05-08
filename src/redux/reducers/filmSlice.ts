@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { FilmListType, SingleFilm } from "../../utils/@globalTypes";
-import { GetAllFilmsPayload, GetSingleFilmPayload, SetAllFilmsPayload, SetSingleFilmPayload } from "./@types";
+import { FilmListType, RecommendedFilm, SingleFilm } from "../../utils/@globalTypes";
+import { GetAllFilmsPayload, GetRecommendedFilmsPayload, GetSingleFilmPayload, SetAllFilmsPayload, SetRecommendedFilmsPayload, SetSingleFilmPayload } from "./@types";
 
 
 
@@ -12,6 +12,8 @@ type FilmState = {
     singleFilm: SingleFilm;
     isSingleFilmLoading: boolean;
     savedFilms: SingleFilm[],
+    recommendedFilms: RecommendedFilm[],
+    isRecommendedFilmsLoading: boolean,
 };
 
 const initialState: FilmState = {
@@ -21,6 +23,8 @@ const initialState: FilmState = {
     singleFilm: null,
     isSingleFilmLoading: false,
     savedFilms: [],
+    recommendedFilms: [],
+    isRecommendedFilmsLoading: false,
 };
 
 const filmSlice = createSlice({
@@ -53,8 +57,19 @@ const filmSlice = createSlice({
             state,
         ) => {
             state.filmList = [];
+            state.recommendedFilms = [];
         },
 
+        getRecommendedFilms: (_, __: PayloadAction<GetRecommendedFilmsPayload>) => { },
+        setRecommendedFilms: (
+            state,
+            { payload: { recommendedFilms } }: PayloadAction<SetRecommendedFilmsPayload>
+        ) => {
+            state.recommendedFilms = recommendedFilms;
+        },
+        setRecommendedFilmsLoading: (state, action: PayloadAction<boolean>) => {
+            state.isRecommendedFilmsLoading = action.payload;
+        },
 
         setSavedFilm: (state, action: PayloadAction<SingleFilm>) => {
             console.log('text', action)
@@ -84,6 +99,9 @@ export const {
     setSingleFilmLoading,
     setSavedFilm,
     clearListOfFilm,
+    setRecommendedFilms,
+    getRecommendedFilms,
+    setRecommendedFilmsLoading,
 } = filmSlice.actions;
 
 export default filmSlice.reducer;
@@ -95,4 +113,6 @@ export const FilmSelectors = {
     getSingleFilm: (state: RootState) => state.film.singleFilm,
     getSingleFilmLoading: (state: RootState) => state.film.isSingleFilmLoading,
     getSavedFilms: (state: RootState) => state.film.savedFilms,
+    getRecommendedFilms: (state: RootState) => state.film.recommendedFilms,
+    getRecommendedFilmsLoading: (state: RootState) => state.film.isRecommendedFilmsLoading,
 };

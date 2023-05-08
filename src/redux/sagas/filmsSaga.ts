@@ -10,12 +10,15 @@ import {
   setAllFilmsLoading,
   setSingleFilm,
   setSingleFilmLoading,
+  setRecommendedFilmsLoading,
+  setRecommendedFilms,
+  getRecommendedFilms,
 } from "../reducers/filmSlice";
 
 import API from "../api";
-import { AllFilmsResponse, SingleFilmsResponse } from "./@types";
+import { AllFilmsResponse, RecommendedFilmsResponse, SingleFilmsResponse } from "./@types";
 import {
-  GetAllFilmsPayload, GetSingleFilmPayload,
+  GetAllFilmsPayload, GetRecommendedFilmsPayload, GetSingleFilmPayload,
 } from "../reducers/@types";
 
 
@@ -53,11 +56,26 @@ function* getSingleFilmWorker(action: PayloadAction<GetSingleFilmPayload>) {
   yield put(setSingleFilmLoading(false));
 }
 
-
+function* getRecommendedFilmsWorker(action: PayloadAction<GetRecommendedFilmsPayload>) {
+  yield put(setRecommendedFilmsLoading(true));
+  const { id } = action.payload;
+  const { ok, data, problem }: ApiResponse<RecommendedFilmsResponse> = yield call(
+    API.getRecommendedFilms,
+    id,
+  );
+  if (ok && data) {
+    console.log(data)
+    yield put(setRecommendedFilms({ recommendedFilms: data.titles }));
+  } else {
+    console.warn("Error getting set RecommendedFilms", problem);
+  }
+  yield put(setRecommendedFilmsLoading(false));
+}
 
 export default function* filmsSaga() {
   yield all([
     takeLatest(getAllFilms, getAllFilmsWorker),
     takeLatest(getSingleFilm, getSingleFilmWorker),
+    takeLatest(getRecommendedFilms, getRecommendedFilmsWorker,),
   ]);
 }

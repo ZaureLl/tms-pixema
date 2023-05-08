@@ -23,3 +23,7 @@ export type GetAllFilmsPayload = {
 export type SingleFilmsResponse = {
     title: SingleFilm;
 };
+
+export type RecommendedFilmsResponse = {
+    titles: any;
+};

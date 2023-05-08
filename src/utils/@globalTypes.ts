@@ -1,3 +1,4 @@
+import { RecommendedFilmsResponse } from './../redux/sagas/@types';
 import { ReactNode } from "react";
 
 export enum ButtonType {
@@ -16,6 +17,8 @@ export type FilmType = {
 };
 
 export type FilmListType = FilmType[];
+
+export type RecommendedListType = RecommendedFilm[];
 
 export type SingleFilm = null | {
     id: number;
@@ -44,3 +47,17 @@ export type SingleFilm = null | {
 
     ]
 };
+
+export type RecommendedFilm = null | {
+    id: number;
+    name: string;
+    poster: string;
+    year: number;
+    rating: string;
+}
+
+export enum TabsNames {
+    Default,
+    FirstTab,
+    ThirdTab,
+}

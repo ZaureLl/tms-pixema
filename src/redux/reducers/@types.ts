@@ -1,4 +1,5 @@
-import { FilmListType, SingleFilm } from "../../utils/@globalTypes";
+import RecommendedFilms from "../../assets/components/RecommendedFilms";
+import { FilmListType, RecommendedFilm, RecommendedListType, SingleFilm } from "../../utils/@globalTypes";
 
 export type PayloadWithCallback<Data> = {
     data: Data;
@@ -58,3 +59,11 @@ export type GetSingleFilmPayload = {
 export type SetSingleFilmPayload = {
     singleFilm: SingleFilm;
 };
+
+export type GetRecommendedFilmsPayload = {
+    id: number;
+}
+
+export type SetRecommendedFilmsPayload = {
+    recommendedFilms: RecommendedListType;
+}
