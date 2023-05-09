@@ -4,7 +4,7 @@
     background: url("../../assets/images/backgroundImage.jpg");
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100vh;
 }
 
 .logoContanier {
@@ -25,13 +25,18 @@
     border-radius: 10px;
     width: 574px;
     color: $white;
+}
 
+.formContanierLight {
+    color: $dark;
+    background-color: $white;
 }
 
 .footerContanier {
     font-weight: 500;
     font-size: 16px;
-    margin-bottom: 84px;
+    margin-bottom: 44px;
+    margin-top: 40px;
     color: $white;
     text-align: center;
 }

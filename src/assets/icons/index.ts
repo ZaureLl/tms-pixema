@@ -13,3 +13,4 @@ export { Fire } from "./Fire";
 export { Bookmark } from "./Bookmark";
 export { Gear } from "./Gear";
 export { Circle } from './Circle';
+export { LightLogo } from "./LightLogo";

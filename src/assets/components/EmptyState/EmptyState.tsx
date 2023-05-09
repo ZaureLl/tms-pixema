@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import classNames from "classnames";
+import styles from "./EmptyState.module.scss";
 
 import { Theme, useThemeContext } from "../../../context/Theme/Theme";
-import styles from "./EmptyState.module.scss";
 import emptyState from "../../images/emptyState.png";
 
 type EmptyStateProps = {

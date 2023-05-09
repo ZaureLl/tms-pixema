@@ -1,8 +1,10 @@
 import { FilmListType, SingleFilm } from "../../utils/@globalTypes";
 
 export type SignInResponse = {
-    access: string;
-    refresh: string;
+    user: {
+        access_token: string;
+        id: number;
+    }
 };
 
 export type AllFilmsResponse = {
@@ -27,3 +29,4 @@ export type SingleFilmsResponse = {
 export type RecommendedFilmsResponse = {
     titles: any;
 };
+

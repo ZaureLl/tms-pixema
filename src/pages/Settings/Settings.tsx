@@ -7,6 +7,7 @@ import Input from "../../assets/components/Input/Input";
 import Switch from "rc-switch";
 import "../../assets/switcher.scss";
 import { Theme, useThemeContext } from "../../context/Theme/Theme";
+import classNames from "classnames";
 
 
 const Settings = () => {
@@ -81,9 +82,6 @@ const Settings = () => {
         }
     }, [confirmPassword, newPassword]);
 
-
-
-
     const onChangeName = (value: string) => {
         setName(value)
     };
@@ -99,7 +97,6 @@ const Settings = () => {
     const onChangeConfirmPassword = (value: string) => {
         setConfirmPassword(value)
     };
-
 
     const isValidCancelBtn = true;
 
@@ -125,20 +122,23 @@ const Settings = () => {
     ]);
 
     const { theme, onChangeTheme } = useThemeContext();
-    function ThemeToggle() {
-        const newTheme = theme === Theme.Light ? Theme.Dark : Theme.Light;
+
+    const isLight = theme === Theme.Light;
+
+    function ThemeToggle(value: boolean) {
+        const newTheme = value ? Theme.Dark : Theme.Light;
+        onChangeTheme(newTheme);
         console.log(newTheme);
     }
 
-
     return (
-        <div className={styles.contentWrapper}>
+        <div className={classNames(styles.contentWrapper, { [styles.contentWrapperLight]: isLight })}>
             <div className={styles.settingsWrapper}>
                 <div className={styles.profileSettingsWrapper}>
                     <h2>
                         Profile
                     </h2>
-                    <div className={styles.profileInputsWrapper}>
+                    <div className={classNames(styles.profileInputsWrapper, { [styles.profileInputsWrapperLight]: isLight })}>
                         <div className={styles.nameWrapper}>
                             <Input placeholder="Artem Lapitsky" value={name} onChange={onChangeName} title="Name"
                                 onBlur={onBlurName}
@@ -153,7 +153,7 @@ const Settings = () => {
                     <h2>
                         Password
                     </h2>
-                    <div className={styles.passwordInputsWrapper}>
+                    <div className={classNames(styles.passwordInputsWrapper, { [styles.passwordInputsWrapperLight]: isLight })}>
                         <div className={styles.asideLargeContainer}>
                             <Input placeholder="Your password" value={password} onChange={onChangePassword} title="Password" type="password" inputClassName={styles.password} errorText={passwordError} onBlur={onBlurPassword} />
                         </div>
@@ -171,12 +171,12 @@ const Settings = () => {
                     <h2>
                         Color mode
                     </h2>
-                    <div className={styles.colorModeContentWrapper}>
+                    <div className={classNames(styles.colorModeContentWrapper, { [styles.colorModeContentWrapperLight]: isLight })}>
                         <div className={styles.colorModeAsideWrapper}>
                             <h3>Dark</h3>
                             <p className={styles.textColorModeSwither}>Use dark thema</p>
                         </div>
-                        <Switch onChange={ThemeToggle} defaultChecked={true} />
+                        <Switch onChange={ThemeToggle} defaultChecked={!isLight} />
                     </div>
                 </div>
             </div>

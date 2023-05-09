@@ -29,6 +29,10 @@
     max-width: 878px;
 }
 
+.mainContenLight {
+    color: $dark;
+}
+
 .genresList {
     color: $light;
     font-style: normal;
@@ -65,6 +69,10 @@
     border-radius: 6px;
     padding: 8px;
     background-color: $graphite;
+}
+
+.badgeLight {
+    background-color: $light;
 }
 
 .imbRating {

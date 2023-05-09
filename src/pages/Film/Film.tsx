@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./Film.module.scss";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +11,6 @@ import RecommendedFilmsSlider from "../../assets/components/RecommendedFilmsSlid
 const Film = () => {
     const params = useParams();
     const dispatch = useDispatch();
-    console.log(params, "test");
 
     const isLoading = useSelector(FilmSelectors.getSingleFilmLoading);
     const isLoadingRecommendedFilms = useSelector(FilmSelectors.getRecommendedFilmsLoading);
@@ -33,8 +32,8 @@ const Film = () => {
             ) : (
                 <SingleFilm film={film} />
             )}
-            <h2 className={styles.headerRecomendation}>Recommendations</h2>
-            {(isLoadingRecommendedFilms && !recommendedFilmList.length) ? (
+
+            {(isLoadingRecommendedFilms) ? (
                 <Loader />
             ) : (
                 <div className={styles.sliderWrapper}>

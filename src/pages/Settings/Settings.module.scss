@@ -1,11 +1,16 @@
 @import "../../assets/colors.scss";
 
 .contentWrapper {
-    padding: 0 367px 64px 0;
+    padding: 0 24% 64px 0;
     color: $white;
     background-color: $black;
     height: 100%;
     font-weight: 500;
+}
+
+.contentWrapperLight {
+    background-color: $white;
+    color: $dark;
 }
 
 .settingsWrapper {
@@ -36,12 +41,20 @@ h2 {
     padding: 40px;
 }
 
+.profileInputsWrapperLight {
+    background-color: $white;
+}
+
 .passwordInputsWrapper {
     display: flex;
     gap: 40px;
     background-color: $dark;
     border-radius: 10px;
     padding: 40px;
+}
+
+.passwordInputsWrapperLight {
+    background-color: $white;
 }
 
 .asideLargeContainer {
@@ -65,7 +78,11 @@ h2 {
     background-color: $dark;
     border-radius: 10px;
     padding: 40px;
-    align-items: center;
+    align-items: flex-end;
+}
+
+.colorModeContentWrapperLight {
+    background-color: $white;
 }
 
 h3 {

@@ -1,7 +1,5 @@
-import { SCORE } from './../../utils/constants';
 import { create } from "apisauce";
 import { SignInUserData, SignUpUserData } from "../reducers/@types";
-import { PER_PAGE } from "../../utils/constants";
 
 const authToken = "675|Zwbs9qHXqE4JQkUwSGGTHSmq5jYUb6fD3UcFKsAW";
 
@@ -41,7 +39,7 @@ const getRecommendedFilms = (id: number) => {
 
 
 const signInUser = (data: SignInUserData) => {
-    return API.post("/auth/login/", data, {
+    return API.post("/auth/login", data, {
         headers: {
             Authorization: `Bearer ${authToken}`,
         },
@@ -49,7 +47,7 @@ const signInUser = (data: SignInUserData) => {
 };
 
 const signUpUser = (data: SignUpUserData) => {
-    return API.post("/auth/login/", data, {
+    return API.post("/auth/register", data, {
         headers: {
             Authorization: `Bearer ${authToken}`,
         },

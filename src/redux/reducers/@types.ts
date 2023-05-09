@@ -19,7 +19,7 @@ export type ActivateUserData = {
 export type SignInUserData = {
     email: string;
     password: string;
-    device_name: string;
+    token_name: string;
 };
 
 export type SignUpUserData = {
@@ -67,8 +67,12 @@ export type SetRecommendedFilmsPayload = {
 }
 
 export type SignUpUserResponse = {
-    user: any;
+    user: {
+        access_token: string;
+    }
 };
+
+
 
 export type SignUpUserPayload = PayloadWithCallback<SignUpUserData>;
 export type ActivateUserPayload = PayloadWithCallback<ActivateUserData>;

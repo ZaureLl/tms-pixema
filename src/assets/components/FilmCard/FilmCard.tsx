@@ -4,6 +4,7 @@ import { FilmProps } from "./types";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Theme, useThemeContext } from "../../../context/Theme/Theme";
 
 
 enum ratingType {
@@ -39,8 +40,11 @@ const FilmCard: FC<FilmProps> = ({ film }) => {
         navigate(`/${id}`);
     };
 
+    const { theme } = useThemeContext();
+    const isLight = theme === Theme.Light;
+
     return (
-        <div className={styles.container}>
+        <div className={classNames(styles.container, { [styles.containerLight]: isLight })}>
             <div className={styles.imgContainer}>
                 <div className={classNames(ratingClass, styles.ratingDefault)}>{rating}</div>
                 <img src={poster} alt="" className={styles.img} />

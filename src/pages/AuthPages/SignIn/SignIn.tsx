@@ -15,8 +15,15 @@ import { ButtonType } from "../../../utils/@globalTypes";
 
 
 
+
 const SignIn = () => {
+
     const device_name = "iphone";
+
+    const { theme } = useThemeContext();
+    const isLight = theme === Theme.Light;
+    console.log("test theme" + isLight, theme)
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -27,9 +34,6 @@ const SignIn = () => {
     const [passwordError, setPasswordError] = useState("");
 
     const dispatch = useDispatch();
-
-    const { theme } = useThemeContext();
-    const isLight = theme === Theme.Light;
 
     const onChangeEmail = (value: string) => {
         setEmail(value);
@@ -50,7 +54,7 @@ const SignIn = () => {
     const onSignInClick = () => {
         dispatch(
             signInUser({
-                data: { email, password, device_name },
+                data: { email, password, token_name: device_name },
                 callback: () => console.log('test'),
             })
         );
@@ -78,14 +82,14 @@ const SignIn = () => {
         return (
             emailError.length === 0 &&
             passwordError.length === 0 &&
-            emailTouched &&
-            passwordTouched
+            password &&
+            email
         );
     }, [
         emailError,
         passwordError,
-        emailTouched,
-        passwordTouched,
+        password,
+        email,
     ]);
 
     return (

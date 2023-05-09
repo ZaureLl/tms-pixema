@@ -16,6 +16,16 @@
     }
 }
 
+.inputLight {
+    background-color: $white;
+    outline: 2px solid $light;
+    color: $secondary;
+
+    &:focus {
+        outline: 2px solid $light;
+    }
+}
+
 .input::placeholder {
 
     color: $secondary;

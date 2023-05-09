@@ -7,6 +7,10 @@
     flex-direction: column;
 }
 
+.pagesContainerWrapperLight {
+    background-color: $white;
+}
+
 .mainWrapper {
     flex: 1 1 auto;
     display: flex;
@@ -14,7 +18,7 @@
 }
 
 .sidebarWrapper {
-    flex: 0 0 368px;
+    flex: 0 0 24%;
 }
 
 .outletWrapper {

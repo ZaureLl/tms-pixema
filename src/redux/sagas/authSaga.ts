@@ -16,8 +16,9 @@ function* signInUserWorker(action: PayloadAction<SignInUserPayload>) {
         data: responseData,
     }: ApiResponse<SignInResponse> = yield call(API.signInUser, data);
     if (ok && responseData) {
-        localStorage.setItem(ACCESS_TOKEN_KEY, responseData?.access);
-        localStorage.setItem(REFRESH_TOKEN_KEY, responseData?.refresh);
+        localStorage.setItem(ACCESS_TOKEN_KEY, responseData?.user.access_token);
+        const userId = responseData?.user.id.toString()
+        localStorage.setItem("user_id", userId);
         yield put(setLoggedIn(true));
         callback();
     } else {
@@ -27,9 +28,7 @@ function* signInUserWorker(action: PayloadAction<SignInUserPayload>) {
 
 function* signUpUserWorker(action: PayloadAction<SignUpUserPayload>) {
     const { data, callback } = action.payload;
-    const { ok,
-        problem,
-    }: ApiResponse<SignUpUserResponse> = yield call(
+    const { ok, problem }: ApiResponse<SignUpUserResponse> = yield call(
         API.signUpUser,
         data
     );

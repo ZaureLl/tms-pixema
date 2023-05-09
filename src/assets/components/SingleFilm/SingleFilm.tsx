@@ -9,6 +9,7 @@ import { Circle } from "../../icons";
 import EmptyState from "../EmptyState";
 import { useDispatch, useSelector } from "react-redux";
 import { FilmSelectors, setSavedFilm } from "../../../redux/reducers/filmSlice";
+import { Theme, useThemeContext } from "../../../context/Theme/Theme";
 
 
 type SingleFilmProps = {
@@ -16,8 +17,13 @@ type SingleFilmProps = {
 };
 
 const SingleFilm: FC<SingleFilmProps> = ({ film }) => {
+
     const dispatch = useDispatch();
     const savedFilms = useSelector(FilmSelectors.getSavedFilms);
+
+    const { theme } = useThemeContext();
+    const isLight = theme === Theme.Light;
+
     if (film) {
         const { poster, genres, name, rating, runtime, description, budget, credits, release_date, year, id } = film;
         const genreNames = genres.map((genre) => genre.display_name);
@@ -44,7 +50,7 @@ const SingleFilm: FC<SingleFilmProps> = ({ film }) => {
                     <img src={poster} alt="" className={styles.img} />
                     <ButtonsGroup isSaved={savedFilmIndex > -1} onClickBookmarkIcon={() => { dispatch(setSavedFilm(film)) }} />
                 </div>
-                <div className={styles.mainConten}>
+                <div className={classNames(styles.mainConten, { [styles.mainContenLight]: isLight })}>
                     <div className={styles.genresList}>
                         <ul>
                             {genreNames.map((genre, index) => (
@@ -56,8 +62,8 @@ const SingleFilm: FC<SingleFilmProps> = ({ film }) => {
                     <div className={styles.name}>{name}</div>
                     <div className={styles.infoBlock}>
                         <ColoredRating rating={rating} />
-                        <div className={classNames(styles.imbRating, styles.badge)} ><Imb />{rating}</div>
-                        <div className={classNames(styles.runtime, styles.badge)}>{runtime} min</div>
+                        <div className={classNames(styles.imbRating, styles.badge, { [styles.badgeLight]: isLight })} ><Imb />{rating}</div>
+                        <div className={classNames(styles.runtime, styles.badge, { [styles.badgeLight]: isLight })}>{runtime} min</div>
                     </div>
                     <div className={styles.description}>{description}</div>
                     <div className={styles.table}>

@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FC, KeyboardEvent } from "react";
 import classNames from "classnames";
 import styles from "./Input.module.scss";
+import { Theme, useThemeContext } from "../../../context/Theme/Theme";
 
 type InputProps = {
     value: string;
@@ -31,6 +32,10 @@ const Input: FC<InputProps> = ({
         onChange(e.target.value);
     };
 
+    const { theme } = useThemeContext();
+    const isLight = theme === Theme.Light;
+
+
     return (
         <>
             {title && <div className={styles.title}>{title}</div>}
@@ -39,6 +44,7 @@ const Input: FC<InputProps> = ({
                 className={classNames(styles.input, inputClassName, {
                     [styles.disabled]: disabled,
                     [styles.valid]: errorText,
+                    [styles.inputLight]: isLight,
                 })}
                 placeholder={placeholder}
                 onKeyDown={onKeyDown}

@@ -5,6 +5,10 @@
     color: $white;
 }
 
+.sliderContainerLight {
+    color: $dark;
+}
+
 .header_wrapper {
     display: flex;
     align-items: baseline;
@@ -35,7 +39,7 @@
     cursor: pointer;
 
     svg>path {
-        stroke: white;
+        stroke: $white;
     }
 }
 

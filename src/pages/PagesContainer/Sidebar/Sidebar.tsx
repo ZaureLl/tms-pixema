@@ -1,6 +1,6 @@
 import React from "react";
-
 import styles from "./Sidebar.module.scss";
+
 import AsideNavLink from "../../../assets/components/AsideNavLink/AsideNavLink";
 import { Bookmark, Fire, Gear, Shape } from "../../../assets/icons";
 import { RoutesList } from "../../Router";

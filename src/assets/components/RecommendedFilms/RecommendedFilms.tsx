@@ -3,6 +3,9 @@ import styles from "./RecommendedFilms.module.scss";
 import { useNavigate } from "react-router-dom";
 import { RecommendedFilm } from "../../../utils/@globalTypes";
 import EmptyState from "../EmptyState";
+import errorImg from "../../images/errorImg.png";
+import { Theme, useThemeContext } from "../../../context/Theme/Theme";
+import classNames from "classnames";
 
 enum ratingType {
     Max,
@@ -21,7 +24,11 @@ type RecommendedFilmProps = {
 };
 
 const RecommendedFilms: FC<RecommendedFilmProps> = ({ film }) => {
+
     const navigate = useNavigate();
+
+    const { theme } = useThemeContext();
+    const isLight = theme === Theme.Light;
 
     if (film) {
         const { id, rating, name, poster, year } = film;
@@ -46,10 +53,10 @@ const RecommendedFilms: FC<RecommendedFilmProps> = ({ film }) => {
 
         return (
             <>
-                <div className={styles.container}>
+                <div className={classNames(styles.container, { [styles.containerLight]: isLight })}>
                     <div>
                         <div className={styles.imgContainer}>
-                            <img src={poster} ></img>
+                            <img src={poster} onError={(e: any) => e.target.src = "../../images/errorImg.png"}></img>
                         </div>
                         <div className={styles.filmName} onClick={onFilmNameClick}>{name}</div>
                         <div className={styles.filmYear}>{year}</div>

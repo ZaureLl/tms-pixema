@@ -14,25 +14,28 @@ import classNames from "classnames";
 import { ButtonType } from "../../../utils/@globalTypes";
 
 const SignUp = () => {
-    const token_name = "iphone 12";
-
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [password_confirmation, setPassword_confirmation] = useState("");
-
-    const [nameTouched, setNameTouched] = useState(false);
-    const [passwordTouched, setPasswordTouched] = useState(false);
-    const [emailTouched, setEmailTouched] = useState(false);
-
-    const [nameError, setNameError] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [passwordError, setPasswordError] = useState("");
 
     const dispatch = useDispatch();
 
     const { theme } = useThemeContext();
     const isLight = theme === Theme.Light;
+
+    const token_name = "iphone 12";
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
+    const [nameTouched, setNameTouched] = useState(false);
+    const [passwordTouched, setPasswordTouched] = useState(false);
+    const [emailTouched, setEmailTouched] = useState(false);
+    const [passwordConfirmationTouched, setPasswordConfirmationTouched] = useState(false);
+
+    const [nameError, setNameError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [passwordConfirmationError, setPasswordConfirmationError] = useState("");
 
     const onChangeName = (value: string) => {
         setName(value);
@@ -44,7 +47,10 @@ const SignUp = () => {
 
     const onChangePassword = (value: string) => {
         setPassword(value);
-        setPassword_confirmation(value);
+    };
+
+    const onChangePasswordConfirmation = (value: string) => {
+        setPasswordConfirmation(value);
     };
 
     const onBlurName = () => {
@@ -59,13 +65,15 @@ const SignUp = () => {
         setPasswordTouched(true);
     };
 
+    const onBlurPasswordConfirmation = () => {
+        setPasswordConfirmationTouched(true);
+    };
+
     const onSignUpClick = () => {
-        dispatch(
-            //////TOODO sign up user
-            signUpUser({
-                data: { email, password, password_confirmation, token_name },
-                callback: () => console.log('test'),
-            })
+        dispatch(signUpUser({
+            data: { email, password, password_confirmation: passwordConfirmation, token_name },
+            callback: () => console.log('test', email, password, passwordConfirmation, token_name),
+        })
         );
     };
 
@@ -95,14 +103,24 @@ const SignUp = () => {
         }
     }, [password, passwordTouched]);
 
+    useEffect(() => {
+        if (password !== passwordConfirmation && passwordConfirmationTouched) {
+            setPasswordConfirmationError("Passwords must match");
+        } else {
+            setPasswordConfirmationError("");
+        }
+    }, [passwordConfirmation, password, passwordConfirmationTouched]);
+
     const isValid = useMemo(() => {
         return (
             nameError.length === 0 &&
             emailError.length === 0 &&
             passwordError.length === 0 &&
+            passwordConfirmationError.length === 0 &&
             nameTouched &&
             emailTouched &&
-            passwordTouched
+            passwordTouched &&
+            passwordConfirmationTouched
         );
     }, [
         nameError,
@@ -111,6 +129,7 @@ const SignUp = () => {
         nameTouched,
         emailTouched,
         passwordTouched,
+        passwordConfirmationTouched,
     ]);
 
     return (
@@ -146,13 +165,21 @@ const SignUp = () => {
                         placeholder="Your password"
                         errorText={passwordError}
                     />
+                    <Input
+                        value={passwordConfirmation}
+                        onBlur={onBlurPasswordConfirmation}
+                        onChange={onChangePasswordConfirmation}
+                        type={"password"}
+                        title="Confirm password"
+                        placeholder="Confirm  password"
+                        errorText={passwordConfirmationError}
+                    />
                 </div>
                 <div
                     className={classNames(styles.bottomGroup, {
                         [styles.darkThemebottomGroupLight]: isLight,
                     })}
                 >
-                    Forgot password?
                     <Button
                         title={"Sign In"}
                         onClick={onSignUpClick}
