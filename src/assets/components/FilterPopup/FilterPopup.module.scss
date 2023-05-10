@@ -1,0 +1,77 @@
+@import "../../colors.scss";
+
+$popup-width: 518px;
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    z-index: 1;
+    opacity: 0;
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+
+    &.active {
+        display: block;
+        opacity: 0.5;
+    }
+}
+
+.container {
+    position: fixed;
+    top: 0;
+    right: -$popup-width;
+    /* set the initial position of the container to be outside of the screen */
+    width: $popup-width;
+    height: 100%;
+    background-color: $dark;
+    z-index: 2;
+    transition: transform 0.3s ease-in-out;
+    /* add a transition for the transform property */
+    color: $white;
+    border-radius: 10px 0px 0px 10px;
+    padding: 0px 40px;
+    box-sizing: border-box;
+
+    &.active {
+        transform: translateX(-$popup-width);
+        /* slide the container from the right side of the screen to the left */
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 0px;
+
+        h2 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 36px;
+            padding-bottom: 0;
+        }
+    }
+
+    .content {}
+
+    .fieldRow {
+        display: flex;
+        justify-content: space-between;
+
+        .fieldColumn {
+            width: 40%;
+        }
+    }
+
+    .closeButton {
+        background-color: transparent;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: $white
+    }
+}

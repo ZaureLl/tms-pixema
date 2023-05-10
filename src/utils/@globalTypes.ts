@@ -61,3 +61,14 @@ export enum TabsNames {
     FirstTab,
     ThirdTab,
 }
+
+export type Filter = {
+    sortBy: string;
+    title: string;
+    genre: string;
+    yearFrom: string;
+    yearTo: string;
+    ratingFrom: string;
+    ratingTo: string;
+    country: string;
+}

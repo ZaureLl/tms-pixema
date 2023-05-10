@@ -1,0 +1,67 @@
+@import "../../colors.scss";
+
+.chipsTextareaContainer {
+    display: flex;
+    gap: 8px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: $graphite;
+    padding: 12px;
+    box-sizing: border-box;
+    width: 100%;
+    color: $white;
+    min-height: 56px;
+
+    &:focus {
+        outline: 2px solid $primary;
+    }
+}
+
+.chipsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.chip {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    color: $white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    background: $dark;
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    &::after {
+        content: "×";
+        font-weight: 500;
+        font-size: 28px;
+        margin-left: 8px;
+        color: $light;
+        display: inline-block;
+        margin-top: -6px;
+    }
+}
+
+.textarea {
+    height: 32px;
+    line-height: 32px;
+    width: auto;
+    border: none;
+    outline: none;
+    display: inline;
+    border-radius: 10px;
+    font-size: 14px;
+    resize: none;
+    overflow: hidden;
+    padding: 0;
+    background-color: transparent;
+    color: $white;
+}

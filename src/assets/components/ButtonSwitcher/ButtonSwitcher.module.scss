@@ -1,0 +1,27 @@
+.buttonSwitcher {
+    display: flex;
+    gap: 8px;
+}
+
+.button {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+        background-color: #f5f5f5;
+    }
+
+    &.selected {
+        background-color: #007aff;
+        color: #fff;
+
+        &:hover {
+            background-color: #0063cc;
+        }
+    }
+}

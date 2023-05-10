@@ -30,3 +30,7 @@ export type RecommendedFilmsResponse = {
     titles: any;
 };
 
+export type SearchFilmsResponse = {
+    query: string;
+    results: FilmListType;
+};

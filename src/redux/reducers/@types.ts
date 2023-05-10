@@ -1,4 +1,4 @@
-import { FilmListType, RecommendedListType, SingleFilm } from "../../utils/@globalTypes";
+import { FilmListType, RecommendedListType, Filter, SingleFilm } from "../../utils/@globalTypes";
 
 export type PayloadWithCallback<Data> = {
     data: Data;
@@ -43,6 +43,7 @@ export type GetAllFilmsPayload = {
     perPage: number;
     page: number;
     score: string | null;
+    filter?: Filter;
 };
 
 export interface SetAllFilmsPayload {

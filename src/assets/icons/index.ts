@@ -1,3 +1,4 @@
+export { FilterIcon } from './FilterIcon';
 export { ArrowLeft } from './ArrowLeft';
 export { ArrowRight } from './ArrowRight';
 export { Filtr } from './Filtr';

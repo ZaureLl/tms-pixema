@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { FilmListType, RecommendedFilm, SingleFilm } from "../../utils/@globalTypes";
+import { FilmListType, Filter, RecommendedFilm, SingleFilm } from "../../utils/@globalTypes";
 import { GetAllFilmsPayload, GetRecommendedFilmsPayload, GetSingleFilmPayload, SetAllFilmsPayload, SetRecommendedFilmsPayload, SetSingleFilmPayload } from "./@types";
+import { FILTER_DEFAULTS } from "../../utils/constants";
 
 
 
@@ -14,6 +15,8 @@ type FilmState = {
     savedFilms: SingleFilm[],
     recommendedFilms: RecommendedFilm[],
     isRecommendedFilmsLoading: boolean,
+    filter: Filter,
+    search: string,
 };
 
 const initialState: FilmState = {
@@ -25,6 +28,8 @@ const initialState: FilmState = {
     savedFilms: [],
     recommendedFilms: [],
     isRecommendedFilmsLoading: false,
+    filter: FILTER_DEFAULTS,
+    search: '',
 };
 
 const filmSlice = createSlice({
@@ -87,6 +92,20 @@ const filmSlice = createSlice({
                 state.savedFilms.splice(savedFilmIndex, 1);
             }
         },
+
+        setFilmFilter: (
+            state,
+            { payload }: PayloadAction<Filter>
+        ) => {
+            state.filter = payload;
+        },
+
+        setSearch: (
+            state,
+            { payload }: PayloadAction<string>
+        ) => {
+            state.search = payload;
+        },
     }
 });
 
@@ -102,6 +121,8 @@ export const {
     setRecommendedFilms,
     getRecommendedFilms,
     setRecommendedFilmsLoading,
+    setFilmFilter,
+    setSearch,
 } = filmSlice.actions;
 
 export default filmSlice.reducer;
@@ -115,4 +136,6 @@ export const FilmSelectors = {
     getSavedFilms: (state: RootState) => state.film.savedFilms,
     getRecommendedFilms: (state: RootState) => state.film.recommendedFilms,
     getRecommendedFilmsLoading: (state: RootState) => state.film.isRecommendedFilmsLoading,
+    getFilter: (state: RootState) => state.film.filter,
+    getSearch: (state: RootState) => state.film.search,
 };

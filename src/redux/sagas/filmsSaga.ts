@@ -1,9 +1,10 @@
-import { SingleFilm } from './../../utils/@globalTypes';
-import { takeLatest, all, call, put, takeLeading } from "redux-saga/effects";
+import { Filter, SingleFilm } from './../../utils/@globalTypes';
+import { takeLatest, all, call, put, takeLeading, select } from "redux-saga/effects";
 import { ApiResponse } from "apisauce";
 import { PayloadAction } from "@reduxjs/toolkit";
 
 import {
+  FilmSelectors,
   getAllFilms,
   getSingleFilm,
   setAllFilms,
@@ -16,27 +17,56 @@ import {
 } from "../reducers/filmSlice";
 
 import API from "../api";
-import { AllFilmsResponse, RecommendedFilmsResponse, SingleFilmsResponse } from "./@types";
+import { AllFilmsResponse, RecommendedFilmsResponse, SearchFilmsResponse, SingleFilmsResponse } from "./@types";
 import {
   GetAllFilmsPayload, GetRecommendedFilmsPayload, GetSingleFilmPayload,
 } from "../reducers/@types";
+import { RootState } from '../store';
 
 
 function* getAllFilmsWorker(action: PayloadAction<GetAllFilmsPayload>) {
   yield put(setAllFilmsLoading(true));
   const { perPage, page, score } = action.payload;
-  const { ok, data, problem }: ApiResponse<AllFilmsResponse> = yield call(
-    API.getFilms,
-    perPage,
-    page,
-    score,
-  );
-  if (ok && data) {
-    console.log(data.pagination.data)
-    yield put(setAllFilms({ filmList: data.pagination.data, filmsCount: data.pagination.total }));
-  } else {
-    console.warn("Error getting all films", problem);
+  const filterState: Filter = yield select(FilmSelectors.getFilter);
+  const searchState: string = yield select(FilmSelectors.getSearch);
+
+  if (searchState) {
+    const { ok, data, problem }: ApiResponse<SearchFilmsResponse> = yield call(
+      API.searchFilms,
+      searchState
+    );
+    if (ok && data) {
+      yield put(setAllFilms({ filmList: data.results, filmsCount: data.results.length }));
+    } else {
+      console.warn("Error getting all films", problem);
+    }
   }
+  else {
+    const filters = {
+      order: filterState.sortBy === 'rating' ? 'popularity:desc' : 'release_date:desc',
+      genre: filterState.genre || null,
+      released: (filterState.yearFrom && filterState.yearTo) ? (filterState.yearFrom + ',' + filterState.yearTo) : null,
+      score: (filterState.ratingFrom && filterState.ratingTo) ? (filterState.ratingFrom + ',' + filterState.ratingTo) : null,
+      country: filterState.country || null,
+    }
+    const { ok, data, problem }: ApiResponse<AllFilmsResponse> = yield call(
+      API.getFilms,
+      perPage,
+      page,
+      score || filters.score,
+      filters.order,
+      filters.genre,
+      filters.released,
+      filters.country,
+    );
+    if (ok && data) {
+      console.log(data.pagination.data)
+      yield put(setAllFilms({ filmList: data.pagination.data, filmsCount: data.pagination.total }));
+    } else {
+      console.warn("Error getting all films", problem);
+    }
+  }
+
   yield put(setAllFilmsLoading(false));
 }
 
