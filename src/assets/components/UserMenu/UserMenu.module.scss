@@ -12,6 +12,12 @@
     padding: 0 70px 0 40px;
     width: 247px;
     justify-content: space-between;
+    position: relative;
+}
+
+.burgerMenuContent {
+    position: relative;
+    width: 100%;
 }
 
 .linlWrapper {
@@ -21,4 +27,68 @@
 
 .iconWrapper {
     width: 10px;
+}
+
+.fullMame {
+    white-space: nowrap;
+}
+
+.userInfo {
+    display: flex;
+    gap: 58px;
+    align-items: center;
+}
+
+.initials {
+    padding: 16px;
+    border-radius: 10px;
+    color: $white;
+    background-color: $primary;
+}
+
+.userNameWrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.menuItems {
+    background-color: $dark;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0p;
+    bottom: -130px;
+    width: 100%;
+    z-index: 1;
+}
+
+.menuLink {
+    padding: 17px 0 15px 20px;
+
+
+    &:hover {
+        color: $primary;
+    }
+
+    &:nth-child(2) {
+        border-top: 1px solid $graphite;
+    }
+}
+
+.menuNotAut {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userIcon {
+    height: 54px;
+    border-radius: 10px;
+    background-color: $primary;
+    width: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
 }

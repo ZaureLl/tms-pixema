@@ -56,7 +56,7 @@ const RecommendedFilms: FC<RecommendedFilmProps> = ({ film }) => {
                 <div className={classNames(styles.container, { [styles.containerLight]: isLight })}>
                     <div>
                         <div className={styles.imgContainer}>
-                            <img src={poster} onError={(e: any) => e.target.src = "../../images/errorImg.png"}></img>
+                            <img src={poster}></img>
                         </div>
                         <div className={styles.filmName} onClick={onFilmNameClick}>{name}</div>
                         <div className={styles.filmYear}>{year}</div>
