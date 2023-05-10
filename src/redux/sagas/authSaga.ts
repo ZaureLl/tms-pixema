@@ -3,9 +3,9 @@ import { ApiResponse } from "apisauce";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { SignInUserPayload, SignUpUserPayload, SignUpUserResponse } from "../reducers/@types";
 import { SignInResponse } from "./@types";
-import { setLoggedIn, signInUser, signUpUser } from "../reducers/authSlice";
+import { logoutUser, setLoggedIn, signInUser, signUpUser } from "../reducers/authSlice";
 import API from '../api';
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "../../utils/constants";
+import { ACCESS_TOKEN_KEY } from "../../utils/constants";
 
 
 function* signInUserWorker(action: PayloadAction<SignInUserPayload>) {
@@ -39,9 +39,17 @@ function* signUpUserWorker(action: PayloadAction<SignUpUserPayload>) {
     }
 };
 
+function* logoutUserWorker() {
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
+    yield put(setLoggedIn(false));
+    localStorage.setItem("user_id", "");
+}
+
 export default function* authSaga() {
     yield all([
         takeLatest(signInUser, signInUserWorker),
         takeLatest(signUpUser, signUpUserWorker),
+        takeLatest(logoutUser, logoutUserWorker),
     ]);
 };
+

@@ -5,7 +5,7 @@ import Button from "../../assets/components/Button/Button";
 import { ButtonType } from "../../utils/@globalTypes";
 import Input from "../../assets/components/Input/Input";
 import Switch from "rc-switch";
-import "../../assets/switcher.scss";
+import "../../assets/switcher/switcher.scss";
 import { Theme, useThemeContext } from "../../context/Theme/Theme";
 import classNames from "classnames";
 

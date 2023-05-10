@@ -3,36 +3,35 @@ import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import Logo from "../../../assets/components/Logo/Logo";
 import Input from "../../../assets/components/Input/Input";
-import { useNavigate } from "react-router-dom";
-import { RoutesList } from "../../Router";
-import { LightLogo, UserIcon } from "../../../assets/icons";
-import Button from "../../../assets/components/Button/Button";
-import { ButtonType } from "../../../utils/@globalTypes";
 import UserMenu from "../../../assets/components/UserMenu/UserMenu";
 import { Theme, useThemeContext } from "../../../context/Theme/Theme";
 import classNames from "classnames";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthSelectors } from "../../../redux/reducers/authSlice";
 
 const Header = () => {
 
     const { theme } = useThemeContext();
     const isLight = theme === Theme.Light;
 
-    const [isOpened, setOpened] = useState(false);
-    const isLoginIn = true;
+    const dispatch = useDispatch();
+
     const userName = "Artem Lapitsky";
 
-    const navigate = useNavigate();
+    const isLoggedIn = useSelector(AuthSelectors.getLoggedIn);
 
-    const onClickMenuButton = () => {
-        setOpened(!isOpened);
+    const capitalizeWords = (str: string): string => {
+        const words = str.split(' ');
+        const firstLetters = words.map(word => word.charAt(0));
+        return firstLetters.join('');
     };
 
-    const onAuthButtonClick = () => {
-        navigate(RoutesList.SignIn);
-    };
+    const initials = capitalizeWords(userName);
+    console.log(initials);
 
 
     return (
+
         <div className={styles.headerWrapper}>
             <div className={classNames(styles.logoWrapper)}>
                 <Logo />
@@ -41,13 +40,10 @@ const Header = () => {
                 <Input placeholder="Search" value="" onChange={() => { }} />
             </div>
             <div className={styles.userMenu}>
-
-                <UserMenu />
+                <UserMenu isLogin={isLoggedIn} initials={initials} fullName={userName} />
             </div>
-
         </div>
     )
-
 };
 
 export default Header;

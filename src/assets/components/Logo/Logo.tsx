@@ -21,7 +21,6 @@ const Logo = () => {
     return (
         <div onClick={onHomeLogoClick} className={styles.logoWrapper}>
             {isLight ? <LightLogo /> : <LogoIcon />}
-
         </div>
     )
 };

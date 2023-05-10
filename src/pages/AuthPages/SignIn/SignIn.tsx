@@ -5,7 +5,7 @@ import AuthLayout from "../../../layouts/AuthLayout";
 import Input from "../../../assets/components/Input/Input";
 import Button from "../../../assets/components/Button/Button";
 import { Theme, useThemeContext } from "../../../context/Theme/Theme";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { RoutesList } from "../../Router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -34,6 +34,7 @@ const SignIn = () => {
     const [passwordError, setPasswordError] = useState("");
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const onChangeEmail = (value: string) => {
         setEmail(value);
@@ -55,7 +56,7 @@ const SignIn = () => {
         dispatch(
             signInUser({
                 data: { email, password, token_name: device_name },
-                callback: () => console.log('test'),
+                callback: () => navigate(RoutesList.Home),
             })
         );
     };
